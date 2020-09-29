@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			
+
 			if($text == 'Meme'){
 				$messages = [
 					'type' => 'image',
@@ -118,7 +118,7 @@ if (!is_null($events['events'])) {
 			echo $result . "\r\n";	
 		}
 	}
-}
+
 echo "OK";
 }
 ?>
