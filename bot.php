@@ -5,6 +5,10 @@ $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+//Input Files
+$files = fopen("./list.txt", "r");
+list($in, $reply) = split('[/.-]', $files);
+//
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
@@ -19,12 +23,19 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			// Build message to reply back
-			$messages = [
+			if($text == $in){
+				$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $reply
 			];
-
+			else{
+				// Build message to reply back
+				$messages = [
+					'type' => 'text',
+					'text' => $text
+				];	
+			}	
+			}
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
