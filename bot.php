@@ -28,7 +28,7 @@ if (!is_null($events['events'])) {
 			if($text == 'เบื่อจัง'){
 				$messages = [
 					'type' => 'images',
-					'previewImageUrl' => $result[array_rand($result)],
+					'previewImageUrl' => $result[array_rand($result)];
 	
 				];
 			}else{
