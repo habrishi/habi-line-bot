@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
 			if($text == 'เบื่อจัง'){
 				$messages = [
 					'type' => 'images',
-					'previewImageUrl' => $rand_text
+					'previewImageUrl' => echo $rand_text;
 	
 				];
 			}else{
