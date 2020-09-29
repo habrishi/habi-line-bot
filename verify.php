@@ -3,7 +3,7 @@ $access_token = 'IvZukDGBwHdPtKzUbArMXq6nXzok07+ksXt4iIwpcaUulvY2T6RnWKNV7p9a9sO
 
 $url = 'https://api.line.me/v1/oauth/verify';
 
-$headers = array('Authorization: Bearer ' . $access_token);
+$headers = array(   'Authorization: Bearer ' . $access_token);
 
 $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:R5YfN2Bkou0igij';
