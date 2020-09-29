@@ -35,6 +35,7 @@ if (!is_null($events['events'])) {
 				$messages = [
 					'type' => 'text',
 					'text' => 'ไรมึง'
+				];
 			}
 			else if ($text == "Meme" || $text == "มีม" || $text == "เบื่อจัง"){
 				$messages = [
