@@ -8,14 +8,19 @@ curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
 $file_meme = file('img.txt');
 $file_stick = file('stickers.txt');
+$file_pic = file('word_sendpic.txt');
 $num_lines_meme = count($file_meme);
 $num_lines_stick = count($file_stick);
+$num_lines_pic = count($file_pic);
 $last_arr_index_meme = $num_lines_meme - 1;
 $last_arr_index_stick = $num_lines_stick - 1;
+$last_arr_index_pic = $num_lines_pic - 1;
 $rand_index_meme = rand(0, $last_arr_index);
 $rand_index_stick = rand(0, $last_arr_stick);
+$rand_index_pic = rand(0, $last_arr_pic);
 $rand_text_meme = $file_meme[$rand_index_meme];
 $rand_text_stick = $file_stick[$rand_index_stick];
+$rand_text_pic = $file_pic[$rand_index_pic];
 //
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -82,7 +87,7 @@ if (!is_null($events['events'])) {
 
 			$messages = [
 				'type' => 'text',
-				'text' => 'ส่งรูปเก่ง'
+				'text' => $rand_text_pic
 
 			];
 			// Make a POST Request to Messaging API to reply to sender
