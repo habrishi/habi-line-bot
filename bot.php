@@ -54,6 +54,27 @@ if (!is_null($events['events'])) {
 					'originalContentUrl' => 'https://raw.githubusercontent.com/habrishi/habi-line-bot/master/audio/fun.m4a',
 					'duration' => "15000"
 				];
+			}else if ($text == "เปิดกล้อง"){
+				$messages = [
+					"quickReply": {
+						"items": [
+						  {
+							"type": "action",
+							"action": {
+							  "type": "cameraRoll",
+							  "label": "Send photo"
+							}
+						  },
+						  {
+							"type": "action",
+							"action": {
+							  "type": "camera",
+							  "label": "Open camera"
+							}
+						  }
+						]
+					  }
+				]
 			}else{
 				// Build message to reply back
 				$messages = [
