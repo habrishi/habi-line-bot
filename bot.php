@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 			if($text == 'Meme'){
 				$messages = [
 					'type' => 'images',
-					'previewImageUrl' => $rand_text,
+					'previewImageUrl' => 'https://raw.githubusercontent.com/habrishi/habi-line-bot/master/images/EfhlKTMU0AAVCo5.jpg'
 	
 				];
 			}else{
