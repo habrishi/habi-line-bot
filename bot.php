@@ -6,7 +6,7 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-$files = fopen("./list.txt", "r");
+$files = fopen("list.txt", "r");
 list($in, $reply) = split('[/.-]', $files);
 //
 $content = file_get_contents('php://input');
