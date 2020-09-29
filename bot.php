@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if($text == $in){
+			if ($text == $in){
 				$messages = [
 				'type' => 'text',
 				'text' => $reply
@@ -60,7 +60,20 @@ if (!is_null($events['events'])) {
 
 			$messages = [
 				'type' => 'text',
-				'text' => 'ส่งรูปเก่ง'
+				'text' => 'ส่งรูปเก่ง$$'
+				"emojis": [
+					{
+					  "index": 11,
+					  "productId": "5ac1bfd5040ab15980c9b435",
+					  "emojiId": "234"
+					},
+					{
+					  "index": 12,
+					  "productId": "5ac21184040ab15980c9b43a",
+					  "emojiId": "012"
+					}
+				  ]
+
 			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
