@@ -6,8 +6,8 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-$file = file('img.txt');
-$num_lines = count($file);
+$file_meme = file('img.txt');
+$num_lines = count($file_meme);
 $last_arr_index = $num_lines - 1;
 $rand_index = rand(0, $last_arr_index);
 $rand_text = $file[$rand_index];
@@ -25,8 +25,8 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
-			if($text == 'เบื่อจัง'){
+			
+			if($text == 'Meme'){
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $rand_text,
