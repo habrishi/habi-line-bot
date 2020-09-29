@@ -6,7 +6,7 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-
+$file_meme = file('img.txt');
 $file_stick = file('stickers.txt');
 $file_pic = file('word_sendpic.txt');
 $num_lines_meme = count($file_meme);
