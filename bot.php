@@ -6,21 +6,7 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-$file_meme = file('img.txt');
-$file_stick = file('stickers.txt');
-$file_pic = file('word_sendpic.txt');
-$num_lines_meme = count($file_meme);
-$num_lines_stick = count($file_stick);
-$num_lines_pic = count($file_pic);
-$last_arr_index_meme = $num_lines_meme - 1;
-$last_arr_index_stick = $num_lines_stick - 1;
-$last_arr_index_pic = $num_lines_pic - 1;
-$rand_index_meme = rand(0, $last_arr_index);
-$rand_index_stick = rand(0, $last_arr_stick);
-$rand_index_pic = rand(0, $last_arr_pic);
-$rand_text_meme = $file_meme[$rand_index_meme];
-$rand_text_stick = $file_stick[$rand_index_stick];
-$rand_text_pic = $file_pic[$rand_index_pic];
+
 //
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -43,6 +29,11 @@ if (!is_null($events['events'])) {
 				];
 			}
 			else if ($text == "Meme" || $text == "มีม" || $text == "เบื่อจัง"){
+				$file_meme = file('img.txt');
+				$num_lines_meme = count($file_meme);
+				$last_arr_index_meme = $num_lines_meme - 1;
+				$rand_index_meme = rand(0, $last_arr_index);
+				$rand_text_meme = $file_meme[$rand_index_meme];
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $rand_text_meme,
@@ -85,6 +76,12 @@ if (!is_null($events['events'])) {
 			$image = $event['message']['image'];
 			$replyToken = $event['replyToken'];
 
+			$file_pic = file('word_sendpic.txt');
+			$num_lines_pic = count($file_pic);
+			$last_arr_index_pic = $num_lines_pic - 1;
+			$rand_index_pic = rand(0, $last_arr_pic - 1);
+			$rand_text_pic = $file_pic[$rand_index_pic];
+
 			$messages = [
 				'type' => 'text',
 				'text' => $rand_text_pic
@@ -112,6 +109,12 @@ if (!is_null($events['events'])) {
 		}else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker'){
 			$sticker = $event['message']['sticker'];
 			$replyToken = $event['replyToken'];
+
+			$file_stick = file('stickers.txt');
+			$num_lines_stick = count($file_stick);
+			$last_arr_index_stick = $num_lines_stick - 1;
+			$rand_index_stick = rand(0, $last_arr_stick -1);
+			$rand_text_stick = $file_stick[$rand_index_stick];
 
 			$messages = [
 				'type' => 'sticker',
