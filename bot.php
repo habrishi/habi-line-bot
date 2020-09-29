@@ -37,6 +37,12 @@ if (!is_null($events['events'])) {
 					'originalContentUrl' => $rand_text_meme,
 					'previewImageUrl' => $rand_text_meme
 				];
+			}else if ($text == "หนังโป๊"){
+				$messages = [
+					'type' => 'audio',
+					'originalContentUrl' => 'https://raw.githubusercontent.com/habrishi/habi-line-bot/master/audio/fun.m4a',
+					'duration' => "15000"
+				];
 			}else{
 				// Build message to reply back
 				$messages = [
