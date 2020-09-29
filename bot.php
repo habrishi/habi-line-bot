@@ -26,10 +26,10 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if($text == 'Meme'){
+			if($text == 'เบื่อจัง'){
 				$messages = [
-					'type' => 'images',
-					'previewImageUrl' => 'https://raw.githubusercontent.com/habrishi/habi-line-bot/master/images/EfhlKTMU0AAVCo5.jpg'
+					'type' => 'image',
+					'previewImageUrl' => $rand_text,
 	
 				];
 			}else{
