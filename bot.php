@@ -6,8 +6,10 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-$files = fopen("list.txt", "r");
-list($in, $reply) = explode('[/]', $files);
+//$files = fopen("list.txt", "r");
+//list($in, $reply) = explode('[/]', $files);
+$file_img = file_get_contents('img.txt');
+$result = explode(',',$file_img);
 //
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -75,7 +77,7 @@ if (!is_null($events['events'])) {
 
 			echo $result . "\r\n";	
 		}else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker'){
-			$image = $event['message']['image'];
+			$sticker = $event['message']['sticker'];
 			$replyToken = $event['replyToken'];
 
 			$messages = [
@@ -103,7 +105,34 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";	
-		}
+		}else if ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+			$ran= $event['message']['text'];
+			$replyToken = $event['replyToken'];
+			if($ran == "เบื่อจัง")
+			$messages = [
+				'type' => 'images',
+				'previewImageUrl' => $result[array_rand($result)]
+
+			];
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . "\r\n";	
 	}
 }
 echo "OK";
