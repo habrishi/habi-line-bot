@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if($text == 'Meme'){
+			if($text == 'meme'){
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $rand_text,
