@@ -8,8 +8,11 @@ curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
 //$files = fopen("list.txt", "r");
 //list($in, $reply) = explode('[/]', $files);
-$file_img = file_get_contents('img.txt');
-$result = explode(',',$file_img);
+$file = file('img.txt');
+$num_lines = count($file);
+$last_arr_index = $num_lines - 1;
+$rand_index = rand(0, $last_arr_index);
+$rand_text = $file[$rand_index];
 //
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -28,7 +31,7 @@ if (!is_null($events['events'])) {
 			if($text == 'เบื่อจัง'){
 				$messages = [
 					'type' => 'images',
-					'previewImageUrl' => $result[array_rand($result)];
+					'previewImageUrl' => $rand_text
 	
 				];
 			}else{
