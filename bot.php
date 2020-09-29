@@ -7,10 +7,15 @@ curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
 $file_meme = file('img.txt');
-$num_lines = count($file_meme);
-$last_arr_index = $num_lines - 1;
-$rand_index = rand(0, $last_arr_index);
-$rand_text = $file[$rand_index];
+$file_stick = file('stickers.txt');
+$num_lines_meme = count($file_meme);
+$num_lines_stick = count($file_stick);
+$last_arr_index_meme = $num_lines_meme - 1;
+$last_arr_index_stick = $num_lines_stick - 1;
+$rand_index_meme = rand(0, $last_arr_index);
+$rand_index_stick = rand(0, $last_arr_stick);
+$rand_text_meme = $file_meme[$rand_index_meme];
+$rand_text_stick = $file_stick[$rand_index_stick];
 //
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -26,11 +31,11 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if($text == 'meme'){
+			if ($text == "Meme"){
 				$messages = [
 					'type' => 'image',
-					'originalContentUrl' => $rand_text,
-					'previewImageUrl' => $rand_text,
+					'originalContentUrl' => $rand_text_meme,
+					'previewImageUrl' => $rand_text_meme
 				];
 			}else{
 				// Build message to reply back
@@ -94,7 +99,7 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'sticker',
 				'packageId' => '11537',
-				'stickerId' => '52002756'
+				'stickerId' => $rand_text_stick
 
 			];
 			// Make a POST Request to Messaging API to reply to sender
