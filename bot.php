@@ -29,8 +29,8 @@ if (!is_null($events['events'])) {
 			if($text == 'Meme'){
 				$messages = [
 					'type' => 'image',
+					'originalContentUrl' => $rand_text,
 					'previewImageUrl' => $rand_text,
-	
 				];
 			}else{
 				// Build message to reply back
