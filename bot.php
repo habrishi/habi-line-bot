@@ -60,7 +60,7 @@ if (!is_null($events['events'])) {
 
 			$messages = [
 				'type' => 'text',
-				'text' => 'ส่งรูปเก่ง$$'
+				'text' => 'ส่งรูปเก่ง$$',
 				"emojis": [
 					{
 					  "index": 11,
