@@ -6,8 +6,6 @@ $proxyauth = 'fixie:R5YfN2Bkou0igij';
 curl_setopt($ch, CURLOPT_PROXY, $proxy);
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 //Input Files
-//$files = fopen("list.txt", "r");
-//list($in, $reply) = explode('[/]', $files);
 $file = file('img.txt');
 $num_lines = count($file);
 $last_arr_index = $num_lines - 1;
@@ -151,3 +149,4 @@ if (!is_null($events['events'])) {
 }
 echo "OK";
 }
+?>
