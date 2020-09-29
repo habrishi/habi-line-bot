@@ -31,13 +31,18 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			if ($text == "Meme"){
+			if ($text == "บอท" || $text == "บอทเหี้ย" || $text == "ไอ้น้อง" || $text == "น้อง" || $text == "น้อน"){
+				$messages = [
+					'type' => 'text',
+					'text' => 'ไรมึง'
+			}
+			else if ($text == "Meme" || $text == "มีม" || $text == "เบื่อจัง"){
 				$messages = [
 					'type' => 'image',
 					'originalContentUrl' => $rand_text_meme,
 					'previewImageUrl' => $rand_text_meme
 				];
-			}else if ($text == "หนังโป๊"){
+			}else if ($text == "หนังโป๊" || $text == "AV" || $text == "หี" || $text == "เงี่ยน"){
 				$messages = [
 					'type' => 'audio',
 					'originalContentUrl' => 'https://raw.githubusercontent.com/habrishi/habi-line-bot/master/audio/fun.m4a',
